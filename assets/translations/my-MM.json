@@ -1,0 +1,15 @@
+{
+    "language":"Language",
+    "change_language":"မြန်မာ",
+    "setting":"သတ်မှတ်ခြင်း",
+    "edit":"ပြင်ဆင်ချင်း",
+    "title":"ခေါင်းစဉ်",
+    "category":"အမျိုးအစား",
+    "light_theme":"အဖြူရောင်",
+    "dart_theme":"အနက်ရောင်",
+    "current_location":"လက်ရှိနေရာ",
+    "profile": "ကိုယ်ရေးရာဇဝင်",
+    "logout": "ထွက်မည်",
+    "cancel": "ပယ်ဖျက်ပါ",
+    "select": "ရွေးချယ်ပါ"
+}

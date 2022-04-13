@@ -1,0 +1,15 @@
+{
+    "language":"Language",
+    "change_language":"English",
+    "title":"Title",
+    "category":"Category",
+    "setting":"Setting",
+    "edit":"Edit",
+    "light_theme":"Light theme",
+    "dart_theme":"Dart theme",
+    "current_location":"Current Location",
+    "profile": "Profile",
+    "logout": "Logout",
+    "cancel": "Cancel",
+    "select": "Select"
+}
