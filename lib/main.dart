@@ -1,14 +1,20 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
+import 'package:ecommerceui/provider/location_provider.dart';
+import 'package:ecommerceui/provider/theme_provider.dart';
 import 'package:ecommerceui/provider/theme_provider.dart';
 import 'package:ecommerceui/screen/drawer/setting.dart';
 import 'package:ecommerceui/screen/home.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
+// @dart=2.9
 void main() async{
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+  }
+
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   runApp(
@@ -16,6 +22,8 @@ void main() async{
       providers: [
         ChangeNotifierProvider(
           create: (context) => ThemeProvider()..getTheme(),),
+        ChangeNotifierProvider(
+          create: (context) => LocationProvider(),),
       ],
       child: EasyLocalization(
         supportedLocales: const [Locale('en', 'US'), Locale('my', 'MM')],
@@ -40,8 +48,8 @@ class MyApp extends StatelessWidget {
         supportedLocales: context.supportedLocales,
         locale: context.locale,
         debugShowCheckedModeBanner: false,
-        theme: ThemeData.light(),
-        darkTheme: ThemeData.dark(),
+        theme: themeProvider.lightTheme,
+        darkTheme: themeProvider.darkTheme,
         themeMode: themeProvider.themeMode,
         initialRoute: Home.route,
         routes: {

@@ -1,6 +1,3 @@
-import 'dart:html';
-
-import 'package:ecommerceui/config/config.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -31,24 +28,25 @@ class ThemeProvider with ChangeNotifier {
     currentTheme = pref.getString('theme') ?? 'system';
     notifyListeners();
   }
+
+  final darkTheme = ThemeData(
+    // primarySwatch: Colors.amber,
+    primaryColor: Colors.black,
+    brightness: Brightness.dark,
+    backgroundColor: Color(0xFF000000),
+    accentColor: Colors.white,
+    accentIconTheme: IconThemeData(color: Colors.black),
+    dividerColor: Colors.black54,
+  );
+
+  final lightTheme = ThemeData(
+    primarySwatch: Colors.amber,
+    primaryColor: Colors.white,
+    brightness: Brightness.light,
+    backgroundColor: Color(0xFFE5E5E5),
+    accentColor: Colors.black,
+    accentIconTheme: IconThemeData(color: Colors.black),
+    dividerColor: Colors.white54,
+  );
+
 }
-
-final darkTheme = ThemeData(
- // primarySwatch: Colors.amber,
-  primaryColor: Colors.black,
-  brightness: Brightness.dark,
-  backgroundColor: Color(0xFF000000),
-  accentColor: Colors.white,
-  accentIconTheme: IconThemeData(color: Colors.black),
-  dividerColor: Colors.black54,
-);
-
-final lightTheme = ThemeData(
-  //primarySwatch: Colors.blue,
-  primaryColor: Colors.white,
-  brightness: Brightness.light,
-  backgroundColor: Color(0xFFE5E5E5),
-  accentColor: Colors.black,
-  accentIconTheme: IconThemeData(color: Colors.white),
-  dividerColor: Colors.white54,
-);

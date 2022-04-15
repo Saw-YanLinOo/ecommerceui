@@ -11,5 +11,6 @@
     "profile": "Profile",
     "logout": "Logout",
     "cancel": "Cancel",
-    "select": "Select"
+    "select": "Select",
+    "confirm":"Confirm"
 }
