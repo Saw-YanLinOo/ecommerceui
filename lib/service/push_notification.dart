@@ -5,6 +5,8 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("Handling a background message: ${message.messageId}");
+  PushNotificationService().showLocalNotification(message);
+
 }
 
 class PushNotificationService {
@@ -83,8 +85,8 @@ class PushNotificationService {
     'Example High Importance Notifications', // title
     description: 'This channel is used for example notifications.', // description
     importance: Importance.high,
-    showBadge: true,
     playSound: true,
+    sound: RawResourceAndroidNotificationSound('notification_sound'),
   );
 
   Future<dynamic> onSelectNoti(String message) async {
@@ -107,6 +109,7 @@ class PushNotificationService {
           channelShowBadge: true,
           importance: Importance.high,
           priority: Priority.high,
+          sound: RawResourceAndroidNotificationSound('notification_sound'),
           color: const Color.fromARGB(255, 255, 153, 0),
         ),
       ),
