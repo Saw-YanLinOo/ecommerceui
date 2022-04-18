@@ -36,7 +36,7 @@ class ThemeProvider with ChangeNotifier {
     backgroundColor: Color(0xFF000000),
     accentColor: Colors.white,
     accentIconTheme: IconThemeData(color: Colors.black),
-    dividerColor: Colors.black54,
+    dividerColor: Colors.white,
   );
 
   final lightTheme = ThemeData(
@@ -46,7 +46,7 @@ class ThemeProvider with ChangeNotifier {
     backgroundColor: Color(0xFFE5E5E5),
     accentColor: Colors.black,
     accentIconTheme: IconThemeData(color: Colors.black),
-    dividerColor: Colors.white54,
+    dividerColor: Colors.black,
   );
 
 }

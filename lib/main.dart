@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerceui/provider/location_provider.dart';
+import 'package:ecommerceui/provider/packet_version_provider.dart';
 import 'package:ecommerceui/provider/theme_provider.dart';
 import 'package:ecommerceui/screen/drawer/setting.dart';
 import 'package:ecommerceui/screen/home.dart';
@@ -19,7 +20,6 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp();
-
   PushNotificationService().registerNotification();
 
   runApp(
@@ -29,6 +29,8 @@ void main() async{
           create: (context) => ThemeProvider()..getTheme(),),
         ChangeNotifierProvider(
           create: (context) => LocationProvider(),),
+        ChangeNotifierProvider(
+          create: (context) => PackageProvider()..getVersion(),),
       ],
       child: EasyLocalization(
         supportedLocales: const [Locale('en', 'US'), Locale('my', 'MM')],
