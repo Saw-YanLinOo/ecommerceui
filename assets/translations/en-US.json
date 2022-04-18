@@ -12,5 +12,6 @@
     "logout": "Logout",
     "cancel": "Cancel",
     "select": "Select",
-    "confirm":"Confirm"
+    "confirm":"Confirm",
+    "notification": "Notification"
 }

@@ -23,11 +23,13 @@ class _GoogleMapLocationState extends State<GoogleMapLocation> {
 
   void _onMapCreated(GoogleMapController controller) {
     mapController.complete(controller);
+    setState(() {});
   }
 
   void checkPermission() async {
     var status = await Permission.location.status;
     if (!status.isGranted) {
+      print('permission Not granted');
       await Permission.location.request();
     }
   }
@@ -47,19 +49,19 @@ class _GoogleMapLocationState extends State<GoogleMapLocation> {
       body: Stack(
         children: [
           GoogleMap(
-              mapType: MapType.hybrid,
-              onMapCreated: _onMapCreated,
-              myLocationEnabled: true,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
-              ),
-              onTap: (val) async {
-                locationProvider.fetchMap(val);
-              },
-              markers: locationProvider.markers.values.toSet(),
-            padding: const EdgeInsets.only(top: 100),
+            padding: EdgeInsets.only(top: 100),
+            mapType: MapType.hybrid,
+            onMapCreated: _onMapCreated,
+            myLocationEnabled: true,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
             ),
+            onTap: (val) async {
+              locationProvider.fetchMap(val);
+            },
+            markers: locationProvider.markers.values.toSet(),
+          ),
           Positioned(
             top: 40,
             left: 20,

@@ -21,7 +21,7 @@ class PushNotificationService {
     _firebaseMessaging = FirebaseMessaging.instance;
 
     //initialize local notification
-    localNotification();
+    initLocalNotification();
 
     // Add the following line
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -35,7 +35,7 @@ class PushNotificationService {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-    print('User granted permission');
+    print('User granted permission!');
     /// For handling the received notifications
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print('Inside Using App => $message');
@@ -53,7 +53,7 @@ class PushNotificationService {
     }
   }
 
-  void localNotification() async{
+  void initLocalNotification() async{
     channel = androidNotificationChannel();
     flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     await flutterLocalNotificationsPlugin
