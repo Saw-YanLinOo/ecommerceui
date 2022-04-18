@@ -1,15 +1,16 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerceui/provider/location_provider.dart';
 import 'package:ecommerceui/provider/theme_provider.dart';
-import 'package:ecommerceui/provider/theme_provider.dart';
 import 'package:ecommerceui/screen/drawer/setting.dart';
 import 'package:ecommerceui/screen/home.dart';
+import 'package:ecommerceui/service/push_notification.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 
-// @dart=2.9
+
 void main() async{
   if (defaultTargetPlatform == TargetPlatform.android) {
     AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
@@ -17,6 +18,10 @@ void main() async{
 
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  await Firebase.initializeApp();
+
+  PushNotificationService().registerNotification();
+
   runApp(
     MultiProvider(
       providers: [
